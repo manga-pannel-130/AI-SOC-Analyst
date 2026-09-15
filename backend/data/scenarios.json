@@ -1,0 +1,76 @@
+[
+    {
+        "id": "ALT-001",
+        "alert_type": "BRUTE_FORCE",
+        "description": "Multiple failed login attempts against an administrator account.",
+        "severity": 8,
+        "frequency": 9,
+        "asset_criticality": 10,
+        "business_impact": 9,
+        "confidence": 8,
+        "source_ip": "185.71.24.19",
+        "username": "admin",
+        "asset_id": "ADMIN-PC-01"
+    },
+    {
+        "id": "ALT-002",
+        "alert_type": "MALWARE_DETECTION",
+        "description": "Endpoint protection detected a suspicious executable.",
+        "severity": 10,
+        "frequency": 5,
+        "asset_criticality": 9,
+        "business_impact": 10,
+        "confidence": 9,
+        "source_ip": "10.10.2.15",
+        "asset_id": "EMPLOYEE-PC-04"
+    },
+    {
+        "id": "ALT-003",
+        "alert_type": "UNAUTHORIZED_USB",
+        "description": "Unauthorized USB device accessed a restricted endpoint.",
+        "severity": 6,
+        "frequency": 4,
+        "asset_criticality": 7,
+        "business_impact": 7,
+        "confidence": 7,
+        "username": "john",
+        "asset_id": "EMPLOYEE-PC-04"
+    },
+    {
+        "id": "ALT-004",
+        "alert_type": "SUSPICIOUS_PROCESS",
+        "description": "PowerShell process executed an encoded command.",
+        "severity": 9,
+        "frequency": 6,
+        "asset_criticality": 8,
+        "business_impact": 8,
+        "confidence": 8,
+        "username": "alice",
+        "asset_id": "ADMIN-PC-01"
+    },
+    {
+        "id": "ALT-005",
+        "alert_type": "NETWORK_ANOMALY",
+        "description": "Unusually large outbound traffic was detected.",
+        "severity": 7,
+        "frequency": 5,
+        "asset_criticality": 8,
+        "business_impact": 8,
+        "confidence": 6,
+        "source_ip": "10.10.3.20",
+        "destination_ip": "203.0.113.50",
+        "asset_id": "FILE-SERVER-01"
+    },
+    {
+        "id": "ALT-006",
+        "alert_type": "IMPOSSIBLE_TRAVEL",
+        "description": "User account logged in from geographically distant locations within a short period.",
+        "severity": 7,
+        "frequency": 3,
+        "asset_criticality": 6,
+        "business_impact": 6,
+        "confidence": 5,
+        "username": "alice",
+        "asset_id": "EMPLOYEE-PC-04"
+    }
+]
