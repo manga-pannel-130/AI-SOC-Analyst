@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1220">
+  <meta name="description" content="Explainable AI SOC analyst console for alert prioritization, investigation, and response decisions.">
+  <title>AI SOC Analyst</title>
+  <link rel="stylesheet" href="/static/styles.css?v=live-simulation-4">
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="#top" aria-label="AI SOC Analyst home"><span class="brand-icon">A</span><span><strong>AI SOC</strong><small>ANALYST LAB</small></span></a>
+    <div class="side-label">WORKSPACE</div>
+    <nav class="navigation"><a class="nav-link selected" href="#overview"><span>◫</span> Overview</a><a class="nav-link" href="#queue"><span>≡</span> Alert queue <i id="nav-count">0</i></a><a class="nav-link" href="#investigation"><span>⌘</span> Investigation</a><a class="nav-link" href="#response"><span>⤴</span> Response lab</a><a class="nav-link" href="#environment"><span>▦</span> Environment</a></nav>
+    <div class="side-bottom"><div class="lab-badge inactive"><span class="pulse"></span><span id="sidebar-simulation-state">SIMULATION IDLE</span></div><p>Classical AI<br>Human supervised</p><div class="side-version">PHASE 02 <span>·</span> v1.2</div></div>
+  </aside>
+  <main class="main" id="top">
+    <header class="topbar"><div class="crumb"><span>LAB CONSOLE</span><b>/</b><strong>Operations overview</strong></div><div class="top-actions"><div class="system-state"><span class="pulse"></span> SYSTEM ONLINE <span class="clock" id="clock"></span></div><button id="theme-toggle" class="theme-toggle" aria-label="Switch color theme"><span id="theme-icon">☀</span><span id="theme-label">Light mode</span></button><button id="refresh" class="icon-button" aria-label="Refresh dashboard" title="Refresh dashboard">↻</button></div></header>
+    <div class="page-content">
+      <section id="overview" class="hero"><div><div class="eyebrow">SIMULATED SECURITY OPERATIONS CENTER</div><h1>Good day, Analyst<span>.</span></h1><p>Prioritize, investigate, and make a deliberate response decision.</p></div><div class="hero-chip"><span class="hero-chip-icon">✳</span><span><b>Classical AI workflow</b><small>Every decision is explainable</small></span></div></section>
+      <section class="simulation-toolbar panel" aria-label="Simulation controls">
+          <div class="simulation-intro"><div class="eyebrow">SIMULATED ALERT SOURCE</div><h2>Incoming alert stream <span id="simulation-status" class="simulation-status">PAUSED</span></h2><p>Scenario-generated events only · no live network connections · reset applies the selected seed</p></div>
+        <div class="simulation-actions">
+          <label>Seed <input id="simulation-seed" type="number" value="2026" min="0" step="1" aria-label="Simulation random seed"></label>
+          <label>Arrival interval <select id="simulation-interval" aria-label="Alert arrival interval"><option value="2">2 seconds</option><option value="5">5 seconds</option><option value="10">10 seconds</option><option value="20" selected>20 seconds</option><option value="30">30 seconds</option></select></label>
+          <button id="simulation-toggle" class="button primary" type="button">Start stream <span>▶</span></button>
+          <button id="simulation-reset" class="button outline" type="button">Reset run</button>
+        </div>
+        <div class="simulation-meta"><span><b id="simulation-count">0</b> generated</span><span><b id="simulation-seed-label">2026</b> seed</span><span id="simulation-rate">One alert every 20 seconds</span></div>
+      </section>
+      <section class="metrics" id="summary" aria-label="SOC summary"></section>
+      <section class="activity-board" aria-label="Live algorithm and event activity">
+        <section class="panel activity-panel">
+          <div class="panel-head"><div><div class="eyebrow">LIVE ALGORITHM TRACE</div><h2 id="algorithm-heading">Algorithm activity</h2></div><span id="algorithm-state" class="method-pill">READY</span></div>
+          <p id="algorithm-caption" class="activity-caption">Start the simulation or investigate an alert to watch the algorithms work.</p>
+          <div id="algorithm-steps" class="activity-list"><div class="activity-empty">Algorithm steps will appear here as the simulation runs.</div></div>
+        </section>
+        <section class="panel history-panel" aria-label="Recent processed alerts">
+          <div class="panel-head"><div><div class="eyebrow">PERSISTED RUN HISTORY</div><h2>Recent processed alerts</h2></div><span id="history-count" class="environment-label">0 SAVED</span></div>
+          <div id="history-list" class="history-list"><div class="activity-empty">Processed alerts and outcomes are saved here across simulation resets.</div></div>
+        </section>
+        <section class="panel activity-panel event-panel">
+          <div class="panel-head"><div><div class="eyebrow">SIMULATED TELEMETRY</div><h2>Incoming event feed</h2></div><span class="environment-label">SCENARIO DATA</span></div>
+          <div id="live-events" class="event-list"><div class="activity-empty">Waiting for the first simulated alert.</div></div>
+        </section>
+      </section>
+      <section class="workspace">
+        <section class="panel queue-panel" id="queue">
+          <div class="panel-head"><div><div class="eyebrow">LIVE SIGNALS</div><h2>Alert queue <span class="count" id="queue-count"></span></h2></div><span class="algorithm-tag"><span>✦</span> HILL CLIMBING</span></div>
+          <div class="queue-tools"><label class="search"><span>⌕</span><input id="search" type="search" placeholder="Search alerts or assets…" autocomplete="off"></label><select id="status-filter" aria-label="Filter alerts by status"><option value="ALL">All statuses</option><option value="NEW">New</option><option value="CONFIRMED">Confirmed</option><option value="SUSPICIOUS">Suspicious</option><option value="BENIGN">Benign</option><option value="RESPONDED">Responded</option><option value="RESPONSE_REJECTED">Rejected</option></select></div>
+          <div class="queue-summary"><span>Priority order</span><span id="sort-score">Hill Climbing is ready</span></div><div id="alerts" class="alerts"></div>
+        </section>
+        <section class="panel detail-panel" id="detail"><div class="empty"><div class="empty-orbit"><span>◎</span></div><h2>Choose an alert to begin</h2><p>Review its signals, walk the investigation paths, then decide whether to approve a simulated response.</p></div></section>
+      </section>
+      <section class="global-environment panel" id="environment"><div class="panel-head"><div><div class="eyebrow">LAB STATE</div><h2>Simulated environment</h2></div><span class="environment-label">NO LIVE SYSTEMS CONNECTED</span></div><div id="environment-content" class="environment-grid"></div></section>
+      <footer><span>AI SOC ANALYST <b>·</b> CLASSICAL AI · HUMAN SUPERVISED</span><span>SIMULATED DATA · HUMAN APPROVAL REQUIRED</span></footer>
+    </div>
+  </main>
+  <div id="toast-region" class="toast-region" aria-live="polite"></div>
+  <script src="/static/app.js?v=live-simulation-4" defer></script>
+</body>
+</html>
